@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import UserContextProvider from "./context/UserContext";
+import axios from "axios";
+
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 interface Props {}
 

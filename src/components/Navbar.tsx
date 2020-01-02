@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { css } from "emotion";
 import { colors } from "../theme/theme";
 import { UserContext } from "./../context/UserContext";
+import GuestButton from "./GuestButton";
 
 const navbar = css`
   background: ${colors.primary};
@@ -15,13 +16,13 @@ const navbar = css`
   }
 `;
 
-interface Props {}
+interface Props { }
 
 const Navbar: React.FC<Props> = () => {
   return (
     <div className={navbar}>
       <h1>Movie roulette</h1>
-      <button>Login</button>
+      <GuestButton />
     </div>
   );
 };
