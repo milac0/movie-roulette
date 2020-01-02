@@ -1,19 +1,23 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { css } from "emotion";
 import { colors } from "./theme/theme";
 import Navbar from "./components/Navbar";
-
-const text = css`
-  color: ${colors.primary};
-`;
+import Home from "./pages/Home";
+import Movie from "./pages/Movie";
 
 interface Props {}
 
 const App: React.FC<Props> = () => {
   return (
-    <div className={text}>
+    <div>
       <Navbar />
-      Hello App!
+      <Router>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/movie" component={Movie} />
+        </Switch>
+      </Router>
     </div>
   );
 };
