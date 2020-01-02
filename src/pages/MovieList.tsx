@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { css } from "emotion";
 // import { primary } from "../theme/theme";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface Movie {
   adult: false;
@@ -33,12 +34,15 @@ const MovieList: React.FC<Props> = () => {
       setMovies([...movies, ...response.data.results]);
     };
     fetchData();
+    console.log(movies);
   }, [page]);
 
   return (
     <div>
       {movies.map((movie, i) => (
-        <h4 key={i}>{JSON.stringify(movie.id)}</h4>
+        <Link to={`/movies/${movie.id}`} key={i}>
+          <h4>{JSON.stringify(movie.id)}</h4>
+        </Link>
       ))}
       <button onClick={() => setPage(page + 1)}>more</button>
     </div>
