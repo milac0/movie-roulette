@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { css } from "emotion";
 import { colors } from "../theme/theme";
+import { UserContext } from "./../context/UserContext";
 
 const navbar = css`
   background: ${colors.primary};
@@ -20,7 +21,7 @@ const Navbar: React.FC<Props> = () => {
   return (
     <div className={navbar}>
       <h1>Movie roulette</h1>
-      <button className="loginButton">Login</button>
+      <button>Login</button>
     </div>
   );
 };

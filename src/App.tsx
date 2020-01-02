@@ -1,16 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { css } from "emotion";
-import { colors } from "./theme/theme";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
+import UserContextProvider from "./context/UserContext";
 
 interface Props {}
 
 const App: React.FC<Props> = () => {
   return (
-    <div>
+    <UserContextProvider>
       <Navbar />
       <Router>
         <Switch>
@@ -18,7 +17,7 @@ const App: React.FC<Props> = () => {
           <Route path="/movie" component={Movie} />
         </Switch>
       </Router>
-    </div>
+    </UserContextProvider>
   );
 };
 
