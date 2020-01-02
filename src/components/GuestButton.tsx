@@ -4,7 +4,7 @@ import { css } from "emotion";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
 
-interface Props { }
+interface Props {}
 
 const GuestButton: React.FC<Props> = () => {
   const { setUser } = useContext(UserContext);

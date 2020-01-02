@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import MovieList from "./pages/MovieList";
 import Movie from "./pages/Movie";
 import UserContextProvider from "./context/UserContext";
 import axios from "axios";
@@ -16,7 +16,7 @@ const App: React.FC<Props> = () => {
       <Navbar />
       <Router>
         <Switch>
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={MovieList} exact />
           <Route path="/movie" component={Movie} />
         </Switch>
       </Router>

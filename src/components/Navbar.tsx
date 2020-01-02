@@ -16,7 +16,7 @@ const navbar = css`
   }
 `;
 
-interface Props { }
+interface Props {}
 
 const Navbar: React.FC<Props> = () => {
   return (
