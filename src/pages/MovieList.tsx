@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import MovieThumbnail from "../components/MovieThumbnail";
 import { Movie } from "../interface";
 import { colors } from "./../theme/theme";
+import RouletteButton from "../components/RouletteButton";
 
 const list = css`
   display: flex;
@@ -20,9 +21,10 @@ const link = css`
   color: ${colors.primary};
 `;
 
-const btnLoad = css`
+const buttons = css`
   text-align: center;
   margin-bottom: 2em;
+  position: relative;
   & button {
     background: ${colors.primary};
     border: none;
@@ -35,6 +37,8 @@ const btnLoad = css`
     &:hover {
       background: ${colors.primaryDark};
     }
+  }
+  & .rouletteBtn {
   }
 `;
 
@@ -50,7 +54,6 @@ const MovieList: React.FC<Props> = () => {
       );
       setMovies([...movies, ...response.data.results]);
     })();
-    console.log(movies);
   }, [page]);
 
   return (
@@ -62,8 +65,9 @@ const MovieList: React.FC<Props> = () => {
           </Link>
         ))}
       </div>
-      <div className={btnLoad}>
+      <div className={buttons}>
         <button onClick={() => setPage(page + 1)}>load more...</button>
+        <RouletteButton />
       </div>
     </Fragment>
   );

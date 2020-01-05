@@ -2,19 +2,17 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { css } from "emotion";
 import axios from "axios";
+import { colors } from "./../theme/theme";
 import {
   getGenres,
   getRuntime,
   getProductionCompanies,
   getYear
 } from "../helpers";
-
-import { UserContext } from "./../context/UserContext";
-
 import CustomRating from "../components/CustomRating";
 
 const details = css`
-  background: #eeeeee;
+  background: ${colors.backgroundGrey};
   margin: 0 auto;
   padding: 1em;
   width: 660px;
@@ -68,10 +66,12 @@ const MovieDetails: React.FC<Props> = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(
-        `movie/${movieid}?api_key=${process.env.API_KEY}&language=en-US`
-      );
-      setMovie(response.data);
+      const response = (
+        await axios.get(
+          `/movie/${movieid}?api_key=${process.env.API_KEY}&language=en-US`
+        )
+      ).data;
+      setMovie(response);
     })();
   }, []);
 
