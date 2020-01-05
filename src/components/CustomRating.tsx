@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { css } from "emotion";
 import Rating from "@material-ui/lab/Rating";
@@ -29,6 +29,22 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
   const { user } = useContext(UserContext);
   const [message, setMessage] = useState();
   const [rate, setRate] = useState<number | null>(0);
+  useEffect(() => {
+    (async () => {
+      // no other way to fetch guest user ratings
+      const ratedMovies = (
+        await axios.get(
+          `/guest_session/${user.guest_session_id}/rated/movies?api_key=${process.env.API_KEY}&language=en-US&sort_by=created_at.asc`
+        )
+      ).data.results;
+      if (ratedMovies) {
+        const movie = ratedMovies.filter(
+          rated => rated.id.toString() === movieid
+        );
+        movie ? setRate(movie[0].rating) : setRate(null);
+      }
+    })();
+  }, []);
   const handleRating = async (value: number | null) => {
     if (isAuthenticated(user.expires_at)) {
       try {
