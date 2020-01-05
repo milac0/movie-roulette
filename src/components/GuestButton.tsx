@@ -21,10 +21,14 @@ interface Props {}
 const GuestButton: React.FC<Props> = () => {
   const { setUser } = useContext(UserContext);
   const handleClick = async () => {
-    const response = await axios.get(
-      `/authentication/guest_session/new?api_key=${process.env.API_KEY}`
-    );
-    setUser(response.data);
+    const response = (
+      await axios.get(
+        `/authentication/guest_session/new?api_key=${process.env.API_KEY}`
+      )
+    ).data;
+    setUser(response);
+    console.log(response);
+    localStorage.setItem("user", JSON.stringify(response));
   };
   return (
     <button className={btn} onClick={handleClick}>

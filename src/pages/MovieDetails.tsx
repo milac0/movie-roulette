@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { css } from "emotion";
 import axios from "axios";
@@ -8,7 +8,12 @@ import {
   getRuntime,
   getProductionCompanies,
   getYear
-} from "../helpers/MovieDetails";
+} from "../helpers";
+import Rating from "react-rating";
+import fullStar from "../assets/images/fullstar.png";
+import emptyStar from "../assets/images/emptystar.png";
+import ratedStar from "../assets/images/ratedstar.png";
+import { UserContext } from "./../context/UserContext";
 
 const details = css`
   background: #eeeeee;
@@ -18,6 +23,7 @@ const details = css`
   & .title-block {
     background: #333333;
     color: #fff;
+    margin-bottom: 1em;
     padding: 1em;
     & h1 {
       font-size: 2rem;
@@ -37,7 +43,6 @@ const details = css`
     & p {
       font-size: 2rem;
       margin: 0;
-      margin-top: 0.5em;
     }
     & span {
       font-size: 1rem;
@@ -57,11 +62,22 @@ const image = css`
   }
 `;
 
+const msg = css`
+  color: #333333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  max-width: 400px;
+`;
+
 interface Props {}
 
 const MovieDetails: React.FC<Props> = () => {
+  const { user } = useContext(UserContext);
   const { movieid } = useParams();
   const [movie, setMovie] = useState();
+  const [message, setMessage] = useState();
+  const [rate, setRate] = useState<number | undefined>(0);
   useEffect(() => {
     (async () => {
       const response = await axios.get(
@@ -70,6 +86,23 @@ const MovieDetails: React.FC<Props> = () => {
       setMovie(response.data);
     })();
   }, []);
+
+  const handleRating = async (value: number) => {
+    //provjeri jel authenticated ako je izvrsi, ako nije, disabled dok ne logira
+
+    try {
+      const response = (
+        await axios.post(
+          `/movie/${movieid}/rating?api_key=${process.env.API_KEY}&guest_session_id=${user.guest_session_id}`,
+          { value }
+        )
+      ).data;
+      setMessage(response.status_message);
+    } catch (err) {
+      setRate(undefined);
+      setMessage("You do not have permissions to access the service.");
+    }
+  };
 
   return (
     <div>
@@ -106,7 +139,20 @@ const MovieDetails: React.FC<Props> = () => {
 
               <span>{movie.popularity}</span>
             </div>
-            <p>stars</p>
+            <div>
+              <Rating
+                stop={10}
+                fractions={2}
+                emptySymbol={<img src={emptyStar} />}
+                fullSymbol={<img src={fullStar} />}
+                placeholderSymbol={<img src={ratedStar} />}
+                // guests cant see their ratings
+                placeholderRating={2}
+                initialRating={rate}
+                onClick={handleRating}
+              />
+              <h2 className={msg}>{message || null}</h2>
+            </div>
           </div>
           <p>{movie.overview}</p>
           <p>

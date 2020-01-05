@@ -14,7 +14,7 @@ interface Props {}
 const App: React.FC<Props> = () => {
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
-    const userLocal = JSON.parse(localStorage.user);
+    const userLocal = localStorage.user ? JSON.parse(localStorage.user) : null;
     if (
       userLocal &&
       moment().isBefore(
@@ -28,7 +28,6 @@ const App: React.FC<Props> = () => {
   return (
     <Router>
       <Navbar />
-      <button onClick={() => console.log(user)}>check</button>
       <Switch>
         <Route path="/" component={MovieList} exact />
         <Route path="/movies/:movieid" component={MovieDetails} />
