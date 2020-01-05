@@ -15,7 +15,7 @@
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noImplicitAny": false,
-        "strictNullChecks": true
+        "strictNullChecks": false
     },
     "exclude": [
         "node_modules"

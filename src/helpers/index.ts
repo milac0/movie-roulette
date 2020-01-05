@@ -30,3 +30,6 @@ export const getProductionCompanies = (companies: Array<Company>) => {
 
 export const isAuthenticated = (expiresAt: string) =>
   moment().isBefore(moment(expiresAt, "YYYY-MM-DD HH:mm:ss").utc());
+
+export const randomNumber = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
