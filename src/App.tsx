@@ -6,22 +6,18 @@ import MovieDetails from "./pages/MovieDetails";
 import UserContextProvider, { UserContext } from "./context/UserContext";
 import axios from "axios";
 import moment from "moment";
+import { isAuthenticated } from "./helpers/index";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 interface Props {}
 
 const App: React.FC<Props> = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   useEffect(() => {
-    const userLocal = localStorage.user ? JSON.parse(localStorage.user) : null;
-    if (
-      userLocal &&
-      moment().isBefore(
-        moment(userLocal.expires_at, "YYYY-MM-DD HH:mm:ss").utc()
-      )
-    ) {
-      setUser(userLocal);
+    const user = localStorage.user ? JSON.parse(localStorage.user) : null;
+    if (user && isAuthenticated(user.expires_at)) {
+      setUser(user);
     }
   }, []);
 

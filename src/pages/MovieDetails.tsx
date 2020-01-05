@@ -2,18 +2,15 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { css } from "emotion";
 import axios from "axios";
-import { colors } from "../theme/theme";
 import {
   getGenres,
   getRuntime,
   getProductionCompanies,
   getYear
 } from "../helpers";
-import Rating from "react-rating";
-import fullStar from "../assets/images/fullstar.png";
-import emptyStar from "../assets/images/emptystar.png";
-import ratedStar from "../assets/images/ratedstar.png";
+import Rating from "@material-ui/lab/Rating";
 import { UserContext } from "./../context/UserContext";
+import { isAuthenticated } from "./../helpers/index";
 
 const details = css`
   background: #eeeeee;
@@ -44,7 +41,7 @@ const details = css`
       font-size: 2rem;
       margin: 0;
     }
-    & span {
+    & .rating-outof {
       font-size: 1rem;
     }
   }
@@ -64,10 +61,17 @@ const image = css`
 
 const msg = css`
   color: #333333;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.75rem;
+  font-weight: 500;
   margin: 0;
+  margin-left: 0.5em;
   max-width: 400px;
+`;
+
+const rateElement = css`
+  & span {
+    font-size: 40px;
+  }
 `;
 
 interface Props {}
@@ -77,7 +81,7 @@ const MovieDetails: React.FC<Props> = () => {
   const { movieid } = useParams();
   const [movie, setMovie] = useState();
   const [message, setMessage] = useState();
-  const [rate, setRate] = useState<number | undefined>(0);
+  const [rate, setRate] = useState<number | null>(0);
   useEffect(() => {
     (async () => {
       const response = await axios.get(
@@ -87,20 +91,24 @@ const MovieDetails: React.FC<Props> = () => {
     })();
   }, []);
 
-  const handleRating = async (value: number) => {
-    //provjeri jel authenticated ako je izvrsi, ako nije, disabled dok ne logira
-
-    try {
-      const response = (
-        await axios.post(
-          `/movie/${movieid}/rating?api_key=${process.env.API_KEY}&guest_session_id=${user.guest_session_id}`,
-          { value }
-        )
-      ).data;
-      setMessage(response.status_message);
-    } catch (err) {
-      setRate(undefined);
-      setMessage("You do not have permissions to access the service.");
+  const handleRating = async (value: number | null) => {
+    if (isAuthenticated(user.expires_at)) {
+      try {
+        const response = (
+          await axios.post(
+            `/movie/${movieid}/rating?api_key=${process.env.API_KEY}&guest_session_id=${user.guest_session_id}`,
+            { value }
+          )
+        ).data;
+        setRate(value);
+        setMessage(response.status_message);
+      } catch (err) {
+        setRate(null);
+        setMessage("Error while submiting rating. Try again later.");
+      }
+    } else {
+      setRate(null);
+      setMessage("You do not have permissions to access the service. Log in.");
     }
   };
 
@@ -134,22 +142,18 @@ const MovieDetails: React.FC<Props> = () => {
             <div>
               <p>
                 {movie.vote_average}
-                <span>/10</span>
+                <span className="rating-outof">/10</span>
               </p>
-
               <span>{movie.popularity}</span>
             </div>
             <div>
               <Rating
-                stop={10}
-                fractions={2}
-                emptySymbol={<img src={emptyStar} />}
-                fullSymbol={<img src={fullStar} />}
-                placeholderSymbol={<img src={ratedStar} />}
-                // guests cant see their ratings
-                placeholderRating={2}
-                initialRating={rate}
-                onClick={handleRating}
+                className={rateElement}
+                name="movie-stars"
+                max={10}
+                value={rate}
+                onChange={(e, value) => handleRating(value)}
+                size="large"
               />
               <h2 className={msg}>{message || null}</h2>
             </div>
