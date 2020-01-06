@@ -21,9 +21,13 @@ const modalRandom = css`
       background: ${colors.secondary};
       border: none;
       border-radius: 5px;
+      cursor: pointer;
       font-weight: 700;
       padding: 0.5em 1em;
       text-align: center;
+      &:active {
+        transform: translateY(2px);
+      }
     }
   }
 `;
