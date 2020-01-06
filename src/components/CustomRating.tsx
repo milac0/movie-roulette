@@ -31,7 +31,7 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
   const [rate, setRate] = useState<number | null>(0);
   useEffect(() => {
     (async () => {
-      // no other way to fetch guest user ratings
+      // no other way to fetch guest users ratings
       const ratedMovies = (
         await axios.get(
           `/guest_session/${user.guest_session_id}/rated/movies?api_key=${process.env.API_KEY}&language=en-US&sort_by=created_at.asc`
@@ -41,7 +41,7 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
         const movie = ratedMovies.filter(
           rated => rated.id.toString() === movieid
         );
-        movie ? setRate(movie[0].rating) : setRate(null);
+        movie.length > 0 ? setRate(movie[0].rating) : setRate(null);
       }
     })();
   }, []);
