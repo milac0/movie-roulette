@@ -7,9 +7,13 @@ import { randomNumber } from "../helpers";
 
 const modalRandom = css`
   & .poster {
-    height: auto;
-    margin-bottom: 0.5em;
+    height: 370.5px;
+    margin-bottom: 1em;
     width: 250px;
+    & img {
+      height: auto;
+      width: 100%;
+    }
   }
   & div {
     text-align: center;
@@ -24,11 +28,17 @@ const modalRandom = css`
   }
 `;
 
+const randomSkeleton = css`
+  height: 370.5px;
+  width: 250px;
+`;
+
 interface Props {}
 
 const ModalContent: React.FC<Props> = () => {
   const [movie, setMovie] = useState(null);
   const [next, setNext] = useState(0);
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     (async () => {
       const totalPages = (
@@ -49,14 +59,15 @@ const ModalContent: React.FC<Props> = () => {
   return (
     <Fragment>
       {movie === null ? (
-        <p>loading...</p>
+        <div className={randomSkeleton}></div>
       ) : (
         <div className={modalRandom}>
           <Link to={`/movies/${movie.id}`}>
-            <img
-              className="poster"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            />
+            <div className={"poster"}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              />
+            </div>
           </Link>
           <div>
             <button className="nextBtn" onClick={() => setNext(next + 1)}>

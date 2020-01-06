@@ -22,6 +22,7 @@ const rouletteBtn = css`
 const modalContent = css`
   background: ${colors.backgroundGrey};
   border: "2px solid #000";
+  height: 420px;
   left: 50%;
   margin: 0;
   padding: 1em;
