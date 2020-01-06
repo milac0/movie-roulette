@@ -38,7 +38,6 @@ interface Props {}
 const ModalContent: React.FC<Props> = () => {
   const [movie, setMovie] = useState(null);
   const [next, setNext] = useState(0);
-  const [visible, setVisible] = useState(false);
   useEffect(() => {
     (async () => {
       const totalPages = (

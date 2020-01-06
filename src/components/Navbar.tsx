@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { css } from "emotion";
 import { colors } from "../theme/theme";
-import { UserContext } from "./../context/UserContext";
 import GuestButton from "./GuestButton";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const navbar = css`
   background: ${colors.primary};
   color: white;
   padding: 1em 2em;
-  & div {
+  & .navbar-content {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -28,7 +27,7 @@ interface Props {}
 const Navbar: React.FC<Props> = () => {
   return (
     <div className={navbar}>
-      <div>
+      <div className="navbar-content">
         <Link to="/">
           <h1>Movie roulette</h1>
         </Link>
