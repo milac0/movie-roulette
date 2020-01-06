@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { css } from "emotion";
 import Rating from "@material-ui/lab/Rating";
-import { isAuthenticated } from "./../helpers/index";
 import { useState } from "react";
 import { UserContext } from "../context/UserContext";
 
@@ -26,7 +25,7 @@ interface Props {
 }
 
 const CustomRating: React.FC<Props> = ({ movieid }) => {
-  const { user } = useContext(UserContext);
+  const { user, isAuth } = useContext(UserContext);
   const [message, setMessage] = useState();
   const [rate, setRate] = useState<number | null>(0);
   useEffect(() => {
@@ -46,7 +45,7 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
     })();
   }, []);
   const handleRating = async (value: number | null) => {
-    if (isAuthenticated(user.expires_at)) {
+    if (isAuth()) {
       try {
         const response = (
           await axios.post(

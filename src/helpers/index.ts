@@ -1,5 +1,3 @@
-import moment from "moment";
-
 interface Genre {
   id: number;
   name: string;
@@ -27,9 +25,6 @@ export const getProductionCompanies = (companies: Array<Company>) => {
   companies.forEach(company => list.push(company.name));
   return list.join(", ");
 };
-
-export const isAuthenticated = (expiresAt: string) =>
-  moment().isBefore(moment(expiresAt, "YYYY-MM-DD HH:mm:ss").utc());
 
 export const randomNumber = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1) + min);

@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import moment from "moment";
 
 interface User {
   success: boolean;
@@ -12,7 +13,8 @@ const initState = {
     guest_session_id: "",
     expires_at: ""
   },
-  setUser: (user: User) => {}
+  setUser: (user: User) => {},
+  isAuth: () => false
 };
 
 export const UserContext = createContext(initState);
@@ -28,8 +30,14 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
     expires_at: ""
   });
 
+  const isAuth = () => {
+    return moment().isBefore(
+      moment(user.expires_at, "YYYY-MM-DD HH:mm:ss").utc()
+    );
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, isAuth }}>
       {children}
     </UserContext.Provider>
   );
