@@ -7,7 +7,9 @@ const initState = {
   filterBy: "popular",
   setFilterBy: (filter: string) => {},
   query: "",
-  setQuery: (filter: string) => {}
+  setQuery: (filter: string | null) => {},
+  page: 1,
+  setPage: (page: number) => {}
 };
 
 export const DataContext = createContext(initState);
@@ -17,13 +19,23 @@ interface Props {
 }
 
 const DataContextProvider: React.FC<Props> = ({ children }) => {
-  const [filterBy, setFilterBy] = useState("popular");
+  const [filterBy, setFilterBy] = useState<string | null>("popular");
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState<Array<Movie>>([]);
+  const [page, setPage] = useState(1);
 
   return (
     <DataContext.Provider
-      value={{ filterBy, setFilterBy, movies, setMovies, query, setQuery }}
+      value={{
+        filterBy,
+        setFilterBy,
+        movies,
+        setMovies,
+        query,
+        setQuery,
+        page,
+        setPage
+      }}
     >
       {children}
     </DataContext.Provider>

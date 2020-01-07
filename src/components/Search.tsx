@@ -16,7 +16,7 @@ const search = css`
 interface Props {}
 
 const Search: React.FC<Props> = () => {
-  const { setMovies, query, setQuery } = useContext(DataContext);
+  const { setMovies, query, setQuery, setFilterBy } = useContext(DataContext);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
@@ -26,6 +26,7 @@ const Search: React.FC<Props> = () => {
     const url = `/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&include_adult=false&page=1`;
     const movies = (await axios.get(url)).data.results;
     setMovies(movies);
+    setFilterBy(null);
   };
   return (
     <form className={search} onSubmit={handleSubmit}>

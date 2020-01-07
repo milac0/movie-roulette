@@ -47,17 +47,20 @@ const buttons = css`
 interface Props {}
 
 const MovieList: React.FC<Props> = () => {
-  const { filterBy, movies, setMovies, query } = useContext(DataContext);
-  const [page, setPage] = useState(1);
+  const { filterBy, movies, setMovies, query, page, setPage } = useContext(
+    DataContext
+  );
 
   useEffect(() => {
-    (async () => {
-      const response = await axios.get(
-        `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=1`
-      );
-      setMovies(response.data.results);
-    })();
-  }, [filterBy, query]);
+    if (filterBy) {
+      (async () => {
+        const response = await axios.get(
+          `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=1`
+        );
+        setMovies(response.data.results);
+      })();
+    }
+  }, [filterBy]);
 
   useEffect(() => {
     (async () => {
