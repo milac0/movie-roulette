@@ -14,8 +14,10 @@ const rouletteBtn = css`
   right: 4em;
   width: 60px;
   z-index: 1;
+
   &:hover {
     background: ${colors.secondaryDark};
+    cursor: pointer;
   }
 `;
 

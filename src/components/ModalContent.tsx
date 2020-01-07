@@ -6,18 +6,21 @@ import { Link } from "react-router-dom";
 import { randomNumber } from "../helpers";
 
 const modalRandom = css`
-  & .poster {
+  .poster {
     height: 370.5px;
     margin-bottom: 1em;
     width: 250px;
-    & img {
-      height: auto;
+
+    img {
+      height: 100%;
       width: 100%;
     }
   }
-  & div {
+
+  div {
     text-align: center;
-    & .nextBtn {
+
+    .nextBtn {
       background: ${colors.secondary};
       border: none;
       border-radius: 5px;

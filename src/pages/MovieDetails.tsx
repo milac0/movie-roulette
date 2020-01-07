@@ -16,35 +16,42 @@ const details = css`
   margin: 0 auto;
   padding: 1em;
   width: 660px;
-  & .title-block {
+
+  .title-block {
     background: #333333;
     color: #fff;
     margin-bottom: 1em;
     padding: 1em;
-    & h1 {
+
+    h1 {
       font-size: 2rem;
       font-weight: 400;
       margin: 0;
     }
-    & h2 {
+
+    h2 {
       font-size: 1rem;
       font-weight: 400;
       margin: 0;
       margin-bottom: 0.75em;
     }
   }
+
   .rating {
     display: flex;
     justify-content: space-between;
-    & p {
+
+    p {
       font-size: 2rem;
       margin: 0;
     }
-    & .rating-outof {
+
+    .rating-outof {
       font-size: 1rem;
     }
   }
-  & p {
+
+  p {
     font-size: 1rem;
   }
 `;

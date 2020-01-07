@@ -17,19 +17,22 @@ const btn = css`
 const account = css`
   margin-right: 0;
   position: relative;
-  & .acc-btn {
+
+  .acc-btn {
     border: 1px solid #fff;
     border-radius: 5px;
     cursor: pointer;
     margin: 0;
     margin-bottom: 0.25em;
     padding: 0.5em;
+
     &:hover {
       background: #fff;
       color: ${colors.primary};
     }
   }
-  & div {
+
+  div {
     background: ${colors.backgroundGrey};
     border-radius: 5px;
     color: black;
@@ -37,11 +40,13 @@ const account = css`
     right: -1.25em;
     width: 140px;
     z-index: 1;
-    & p {
+
+    p {
       border-radius: 5px;
       cursor: pointer;
       margin: 0.25em;
       padding: 0.5em 1em;
+
       &:hover {
         background: #aaaaaa;
       }

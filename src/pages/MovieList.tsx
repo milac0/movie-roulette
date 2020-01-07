@@ -24,7 +24,7 @@ const link = css`
 
 const buttons = css`
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 10em;
   position: relative;
 
   button {
@@ -72,6 +72,8 @@ const MovieList: React.FC<Props> = () => {
     })();
   }, [page]);
 
+  const handleClick = () => setPage(page + 1);
+
   return (
     <Fragment>
       <SearchBar />
@@ -83,7 +85,7 @@ const MovieList: React.FC<Props> = () => {
         ))}
       </div>
       <div className={buttons}>
-        <button onClick={() => setPage(page + 1)}>load more...</button>
+        <button onClick={handleClick}>load more...</button>
         <RouletteButton />
       </div>
     </Fragment>
