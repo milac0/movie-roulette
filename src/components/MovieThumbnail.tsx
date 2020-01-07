@@ -72,9 +72,9 @@ const MovieThumbnail: React.FC<Props> = ({
 }) => {
   const hover = (
     <div className={hoverDiv}>
-      <p className="title">{title.toUpperCase()}</p>
-      <p className="year">{getYear(release_date)}</p>
-      <p className="lang">{original_language.toUpperCase()}</p>
+      <p className="title">{title.toUpperCase() || null}</p>
+      <p className="year">{getYear(release_date) || null}</p>
+      <p className="lang">{original_language.toUpperCase() || null}</p>
     </div>
   );
   return (
