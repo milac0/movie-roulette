@@ -8,12 +8,14 @@ const navbar = css`
   background: ${colors.primary};
   color: white;
   padding: 1em 2em;
-  & .navbar-content {
+
+  .navbar-content {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 1200px;
-    & h1 {
+
+    h1 {
       color: #fff;
       margin: 0;
       text-align: center;

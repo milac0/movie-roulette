@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment, useContext } from "react";
 import { css } from "emotion";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import MovieThumbnail from "../components/MovieThumbnail";
 import { Movie } from "../interface";
 import { colors } from "./../theme/theme";
 import RouletteButton from "../components/RouletteButton";
+import { DataContext } from "./../context/DataContext";
+import SearchBar from "../components/SearchBar";
 
 const list = css`
   display: flex;
@@ -25,7 +27,8 @@ const buttons = css`
   text-align: center;
   margin-bottom: 2em;
   position: relative;
-  & button {
+
+  button {
     background: ${colors.primary};
     border: none;
     border-radius: 5px;
@@ -34,23 +37,33 @@ const buttons = css`
     margin: 0 auto;
     padding: 1em;
     width: 20em;
+
     &:hover {
       background: ${colors.primaryDark};
     }
-  }
-  & .rouletteBtn {
   }
 `;
 
 interface Props {}
 
 const MovieList: React.FC<Props> = () => {
+  const { filterBy } = useContext(DataContext);
   const [movies, setMovies] = useState<Array<Movie>>([]);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
     (async () => {
       const response = await axios.get(
-        `/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=${page}`
+        `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=1`
+      );
+      setMovies(response.data.results);
+    })();
+  }, [filterBy]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get(
+        `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=${page}`
       );
       setMovies([...movies, ...response.data.results]);
     })();
@@ -58,6 +71,7 @@ const MovieList: React.FC<Props> = () => {
 
   return (
     <Fragment>
+      <SearchBar />
       <div className={list}>
         {movies.map((movie, i) => (
           <Link className={link} to={`/movies/${movie.id}`} key={i}>

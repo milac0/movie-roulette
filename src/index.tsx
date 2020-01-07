@@ -2,10 +2,13 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./App";
 import UserContextProvider from "./context/UserContext";
+import DataContextProvider from "./context/DataContext";
 
 const jsx = (
   <UserContextProvider>
-    <App />
+    <DataContextProvider>
+      <App />
+    </DataContextProvider>
   </UserContextProvider>
 );
 
