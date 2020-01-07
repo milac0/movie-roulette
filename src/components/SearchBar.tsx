@@ -2,36 +2,35 @@ import React, { useContext } from "react";
 import { css } from "emotion";
 import { colors } from "../theme/theme";
 import { DataContext } from "./../context/DataContext";
+import Search from "./Search";
 
 const searchbar = css`
   background: ${colors.primary};
   border-top: 1px solid #fff;
-  color: white;
-  padding: 1em 2em;
+`;
 
-  .navbar-content {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0 auto;
-    max-width: 1200px;
+const container = css`
+  display: flex;
+  justify-content: center;
+  padding: 1em 0;
 
-    button {
-      background: ${colors.secondaryDark};
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin: 0 0.5em;
-      padding: 0.5em 1em;
+  button {
+    background: ${colors.secondaryDark};
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
 
-      &:hover {
-        background: ${colors.secondary};
-      }
+    &:hover {
+      background: ${colors.secondary};
+      cursor: pointer;
+    }
 
-      &:active {
-        transform: translateY(2px);
-      }
+    &:active {
+      transform: translateY(2px);
     }
   }
 `;
@@ -39,13 +38,15 @@ const searchbar = css`
 interface Props {}
 
 const SearchBar: React.FC<Props> = () => {
-  const { setFilterBy } = useContext(DataContext);
+  const { setFilterBy, setQuery } = useContext(DataContext);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setQuery("");
     setFilterBy(e.currentTarget.value);
   };
   return (
     <div className={searchbar}>
-      <div className="navbar-content">
+      <div className={container}>
+        <Search />
         <button onClick={handleClick} value="popular">
           Popular
         </button>
@@ -54,6 +55,9 @@ const SearchBar: React.FC<Props> = () => {
         </button>
         <button onClick={handleClick} value="top_rated">
           Top Rated
+        </button>
+        <button onClick={handleClick} value="upcoming">
+          Upcoming
         </button>
       </div>
     </div>

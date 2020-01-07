@@ -1,8 +1,13 @@
 import React, { createContext, useState } from "react";
+import { Movie } from "../interface";
 
 const initState = {
+  movies: [],
+  setMovies: (movies: Array<Movie>) => {},
   filterBy: "popular",
-  setFilterBy: (filter: string) => {}
+  setFilterBy: (filter: string) => {},
+  query: "",
+  setQuery: (filter: string) => {}
 };
 
 export const DataContext = createContext(initState);
@@ -13,9 +18,13 @@ interface Props {
 
 const DataContextProvider: React.FC<Props> = ({ children }) => {
   const [filterBy, setFilterBy] = useState("popular");
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState<Array<Movie>>([]);
 
   return (
-    <DataContext.Provider value={{ filterBy, setFilterBy }}>
+    <DataContext.Provider
+      value={{ filterBy, setFilterBy, movies, setMovies, query, setQuery }}
+    >
       {children}
     </DataContext.Provider>
   );

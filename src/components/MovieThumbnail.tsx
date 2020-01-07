@@ -31,7 +31,7 @@ const movie = css`
   }
 
   img {
-    height: auto;
+    height: 100%;
     width: 100%;
   }
 `;

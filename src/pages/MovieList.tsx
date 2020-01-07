@@ -3,7 +3,6 @@ import { css } from "emotion";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieThumbnail from "../components/MovieThumbnail";
-import { Movie } from "../interface";
 import { colors } from "./../theme/theme";
 import RouletteButton from "../components/RouletteButton";
 import { DataContext } from "./../context/DataContext";
@@ -40,6 +39,7 @@ const buttons = css`
 
     &:hover {
       background: ${colors.primaryDark};
+      cursor: pointer;
     }
   }
 `;
@@ -47,8 +47,7 @@ const buttons = css`
 interface Props {}
 
 const MovieList: React.FC<Props> = () => {
-  const { filterBy } = useContext(DataContext);
-  const [movies, setMovies] = useState<Array<Movie>>([]);
+  const { filterBy, movies, setMovies, query } = useContext(DataContext);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -58,13 +57,14 @@ const MovieList: React.FC<Props> = () => {
       );
       setMovies(response.data.results);
     })();
-  }, [filterBy]);
+  }, [filterBy, query]);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(
-        `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=${page}`
-      );
+      const url = query
+        ? `/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&include_adult=false&page=${page}`
+        : `/movie/${filterBy}?api_key=${process.env.API_KEY}&language=en-US&page=${page}`;
+      const response = await axios.get(url);
       setMovies([...movies, ...response.data.results]);
     })();
   }, [page]);
