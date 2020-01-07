@@ -26,7 +26,7 @@ const navbar = css`
 
 interface Props {}
 
-const Navbar: React.FC<Props> = () => {
+const Header: React.FC<Props> = () => {
   return (
     <div className={navbar}>
       <div className="navbar-content">
@@ -39,4 +39,4 @@ const Navbar: React.FC<Props> = () => {
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import MovieList from "./pages/MovieList";
 import MovieDetails from "./pages/MovieDetails";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
-import Footer from "./components/Footer";
+import Layout from "./components/Layout";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
@@ -22,12 +21,12 @@ const App: React.FC<Props> = () => {
 
   return (
     <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/" component={MovieList} exact />
-        <Route path="/movies/:movieid" component={MovieDetails} />
-      </Switch>
-      <Footer />
+      <Layout>
+        <Switch>
+          <Route path="/" component={MovieList} exact />
+          <Route path="/movies/:movieid" component={MovieDetails} />
+        </Switch>
+      </Layout>
     </Router>
   );
 };
