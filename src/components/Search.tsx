@@ -23,10 +23,12 @@ const Search: React.FC<Props> = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const url = `/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&include_adult=false&page=1`;
-    const movies = (await axios.get(url)).data.results;
-    setMovies(movies);
-    setFilterBy(null);
+    if (query) {
+      const url = `/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&include_adult=false&page=1`;
+      const movies = (await axios.get(url)).data.results;
+      setMovies(movies);
+      setFilterBy(null);
+    }
   };
   return (
     <form className={search} onSubmit={handleSubmit}>
