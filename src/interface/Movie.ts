@@ -1,4 +1,4 @@
-export interface Movie {
+export default interface Movie {
   adult: false;
   backdrop_path: string;
   genre_ids: Array<number>;

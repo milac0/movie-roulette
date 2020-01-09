@@ -1,10 +1,10 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { randomNumber } from "../helpers";
+import { randomNumber } from "./modalContent.helpers";
 import styles from "./modalContent.scss";
 
-interface Props {}
+interface Props { }
 
 const ModalContent: React.FC<Props> = () => {
   const [movie, setMovie] = useState(null);
@@ -31,24 +31,24 @@ const ModalContent: React.FC<Props> = () => {
       {movie === null ? (
         <div className={styles.randomSkeleton}></div>
       ) : (
-        <div className={styles.modalRandom}>
-          <Link to={`/movies/${movie.id}`}>
-            <div className={styles.poster}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              />
-            </div>
-          </Link>
-          <div>
-            <button
-              className={styles.nextBtn}
-              onClick={() => setNext(next + 1)}
-            >
-              Random
+          <div className={styles.modalRandom}>
+            <Link to={`/movies/${movie.id}`}>
+              <div className={styles.poster}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                />
+              </div>
+            </Link>
+            <div>
+              <button
+                className={styles.nextBtn}
+                onClick={() => setNext(next + 1)}
+              >
+                Random
             </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

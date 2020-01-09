@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { Movie } from "../interface";
+import Movie from "../interface/Movie";
 
 const initState = {
   movies: [],
