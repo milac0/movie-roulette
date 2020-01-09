@@ -11,6 +11,7 @@ const SearchBar: React.FC<Props> = () => {
     setQuery("");
     setFilterBy(e.currentTarget.value);
   };
+
   return (
     <div className={styles.searchbar}>
       <div className={styles.container}>

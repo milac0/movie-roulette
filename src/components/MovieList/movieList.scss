@@ -1,0 +1,15 @@
+@import "../../theme/variables";
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1em auto;
+  max-width: 1200px;
+  width: 90%;
+}
+
+.link {
+  text-decoration: none;
+  color: $primary;
+}

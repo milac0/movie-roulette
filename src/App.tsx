@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MovieList from "./pages/MovieList/MovieList";
+import Home from "./pages/Home/Home";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
@@ -23,7 +23,7 @@ const App: React.FC<Props> = () => {
     <Router>
       <Layout>
         <Switch>
-          <Route path="/" component={MovieList} exact />
+          <Route path="/" component={Home} exact />
           <Route path="/movies/:movieid" component={MovieDetails} />
         </Switch>
       </Layout>

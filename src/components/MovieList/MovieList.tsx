@@ -1,12 +1,9 @@
-import React, { useEffect, Fragment, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
+import { DataContext } from "../../context/DataContext";
 import { Link } from "react-router-dom";
 import MovieThumbnail from "../../components/MovieThumbnail/MovieThumbnail";
-import RouletteButton from "../../components/RouletteButton/RouletteButton";
-import { DataContext } from "../../context/DataContext";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import styles from "./movieList.scss";
-import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
 
 interface Props {}
 
@@ -35,20 +32,13 @@ const MovieList: React.FC<Props> = () => {
   }, [page]);
 
   return (
-    <Fragment>
-      <SearchBar />
-      <div className={styles.list}>
-        {movies.map((movie, i) => (
-          <Link className={styles.link} to={`/movies/${movie.id}`} key={i}>
-            <MovieThumbnail movie={movie} />
-          </Link>
-        ))}
-      </div>
-      <div className={styles.buttons}>
-        <LoadMoreButton />
-        <RouletteButton />
-      </div>
-    </Fragment>
+    <div className={styles.list}>
+      {movies.map((movie, i) => (
+        <Link className={styles.link} to={`/movies/${movie.id}`} key={i}>
+          <MovieThumbnail movie={movie} />
+        </Link>
+      ))}
+    </div>
   );
 };
 
