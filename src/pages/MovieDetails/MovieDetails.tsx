@@ -4,10 +4,10 @@ import axios from "axios";
 import {
   getGenres,
   getRuntime,
-  getProductionCompanies,
-  getYear
-} from "../helpers";
-import CustomRating from "../components/CustomRating";
+  getProductionCompanies
+} from "./movieDetails.helpers";
+import { getYear } from "../../helpers/index";
+import CustomRating from "../../components/CustomRating/CustomRating";
 import styles from "./movieDetails.scss";
 
 interface Props {}

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { DataContext } from "./../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 import styles from "./search.scss";
 
 interface Props {}

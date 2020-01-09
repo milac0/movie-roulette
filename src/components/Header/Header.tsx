@@ -1,5 +1,5 @@
 import React from "react";
-import GuestButton from "./GuestButton";
+import GuestButton from "../GuestButton/GuestButton";
 import { Link } from "react-router-dom";
 import styles from "./header.scss";
 

@@ -1,10 +1,10 @@
 import React from "react";
-import shuffleImg from "../assets/images/shuffle2.png";
+import shuffleImg from "./images/shuffle.png";
 import Modal from "@material-ui/core/Modal";
-import ModalContent from "./ModalContent/ModalContent";
+import ModalContent from "../ModalContent/ModalContent";
 import styles from "./rouletteButton.scss";
 
-interface Props { }
+interface Props {}
 
 const RouletteButton: React.FC<Props> = () => {
   const [open, setOpen] = React.useState(false);

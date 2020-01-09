@@ -1,7 +1,7 @@
 import React from "react";
 import Movie from "../../interface/Movie";
-import Hover from "../Hover";
-import { getYear } from "./movieThumbnail.helpers";
+import Hover from "../Hover/Hover";
+import { getYear } from "../../helpers";
 import styles from "./movieThumbnail.scss";
 
 interface Props {

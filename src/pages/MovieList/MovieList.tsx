@@ -1,18 +1,17 @@
-import React, { useEffect, useState, Fragment, useContext } from "react";
+import React, { useEffect, Fragment, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import MovieThumbnail from "../components/MovieThumbnail";
-import RouletteButton from "../components/RouletteButton";
-import { DataContext } from "./../context/DataContext";
-import SearchBar from "../components/SearchBar";
+import MovieThumbnail from "../../components/MovieThumbnail/MovieThumbnail";
+import RouletteButton from "../../components/RouletteButton/RouletteButton";
+import { DataContext } from "../../context/DataContext";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import styles from "./movieList.scss";
+import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
 
 interface Props {}
 
 const MovieList: React.FC<Props> = () => {
-  const { filterBy, movies, setMovies, query, page, setPage } = useContext(
-    DataContext
-  );
+  const { filterBy, movies, setMovies, query, page } = useContext(DataContext);
 
   useEffect(() => {
     if (filterBy) {
@@ -35,8 +34,6 @@ const MovieList: React.FC<Props> = () => {
     })();
   }, [page]);
 
-  const handleClick = () => setPage(page + 1);
-
   return (
     <Fragment>
       <SearchBar />
@@ -48,7 +45,7 @@ const MovieList: React.FC<Props> = () => {
         ))}
       </div>
       <div className={styles.buttons}>
-        <button onClick={handleClick}>load more...</button>
+        <LoadMoreButton />
         <RouletteButton />
       </div>
     </Fragment>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import Rating from "@material-ui/lab/Rating";
 import { useState } from "react";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import styles from "./customRating.scss";
 
 interface Props {

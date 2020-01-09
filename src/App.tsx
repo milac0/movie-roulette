@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MovieList from "./pages/MovieList";
-import MovieDetails from "./pages/MovieDetails";
+import MovieList from "./pages/MovieList/MovieList";
+import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import { UserContext } from "./context/UserContext";
 import axios from "axios";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 

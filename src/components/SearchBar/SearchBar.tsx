@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { DataContext } from "./../context/DataContext";
-import Search from "./Search";
+import { DataContext } from "../../context/DataContext";
+import Search from "../Search/Search";
 import styles from "./searchBar.scss";
 
 interface Props {}
