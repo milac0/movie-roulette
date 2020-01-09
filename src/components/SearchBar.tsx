@@ -1,39 +1,7 @@
 import React, { useContext } from "react";
-import { css } from "emotion";
-import { colors } from "../theme/theme";
 import { DataContext } from "./../context/DataContext";
 import Search from "./Search";
-
-const searchbar = css`
-  background: ${colors.primary};
-  border-top: 1px solid #fff;
-`;
-
-const container = css`
-  display: flex;
-  justify-content: center;
-  padding: 1em 0;
-
-  button {
-    background: ${colors.secondaryDark};
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin: 0 0.5em;
-    padding: 0.5em 1em;
-
-    &:hover {
-      background: ${colors.secondary};
-      cursor: pointer;
-    }
-
-    &:active {
-      transform: translateY(2px);
-    }
-  }
-`;
+import styles from "./searchBar.scss";
 
 interface Props {}
 
@@ -44,8 +12,8 @@ const SearchBar: React.FC<Props> = () => {
     setFilterBy(e.currentTarget.value);
   };
   return (
-    <div className={searchbar}>
-      <div className={container}>
+    <div className={styles.searchbar}>
+      <div className={styles.container}>
         <Search />
         <button onClick={handleClick} value="popular">
           Popular

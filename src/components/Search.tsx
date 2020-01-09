@@ -1,17 +1,7 @@
 import React, { useState, useContext } from "react";
-import { css } from "emotion";
-import { colors } from "../theme/theme";
 import axios from "axios";
 import { DataContext } from "./../context/DataContext";
-
-const search = css`
-  input {
-    border: 1px solid ${colors.secondaryDark};
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 0.25em 0.5em;
-  }
-`;
+import styles from "./search.scss";
 
 interface Props {}
 
@@ -31,7 +21,7 @@ const Search: React.FC<Props> = () => {
     }
   };
   return (
-    <form className={search} onSubmit={handleSubmit}>
+    <form className={styles.search} onSubmit={handleSubmit}>
       <input
         type="text"
         name="search"

@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { css } from "emotion";
 import axios from "axios";
-import { colors } from "./../theme/theme";
 import {
   getGenres,
   getRuntime,
@@ -10,60 +8,7 @@ import {
   getYear
 } from "../helpers";
 import CustomRating from "../components/CustomRating";
-
-const details = css`
-  background: ${colors.backgroundGrey};
-  margin: 0 auto;
-  padding: 1em;
-  width: 660px;
-
-  .title-block {
-    background: #333333;
-    color: #fff;
-    margin-bottom: 1em;
-    padding: 1em;
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 400;
-      margin: 0;
-    }
-
-    h2 {
-      font-size: 1rem;
-      font-weight: 400;
-      margin: 0;
-      margin-bottom: 0.75em;
-    }
-  }
-
-  .rating {
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      font-size: 2rem;
-      margin: 0;
-    }
-
-    .rating-outof {
-      font-size: 1rem;
-    }
-  }
-
-  p {
-    font-size: 1rem;
-  }
-`;
-
-const image = css`
-  display: flex;
-  justify-content: space-between;
-  & .image-poster {
-    margin-right: 1em;
-    height: 281px;
-  }
-`;
+import styles from "./movieDetails.scss";
 
 interface Props {}
 
@@ -85,10 +30,10 @@ const MovieDetails: React.FC<Props> = () => {
   return (
     <div>
       {movie === undefined ? (
-        <h1>Loading skeleton</h1>
+        <div className={styles.skeleton}></div>
       ) : (
-        <div className={details}>
-          <div className="title-block">
+        <div className={styles.details}>
+          <div className={styles.titleBlock}>
             <h1>
               {movie.title} ({getYear(movie.release_date)}){" "}
             </h1>
@@ -97,24 +42,24 @@ const MovieDetails: React.FC<Props> = () => {
               {getGenres(movie.genres)} &nbsp; | &nbsp;{" "}
               {movie.original_language}
             </h2>
-            <div className={image}>
+            <div className={styles.image}>
               <img
-                className="image-poster"
+                className={styles.imagePoster}
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               />
               <img
-                className="image-backdrop"
+                className={styles.imageBackdrop}
                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
               />
             </div>
           </div>
-          <div className="rating">
+          <div className={styles.rating}>
             <div>
               <p>
                 {movie.vote_average}
-                <span className="rating-outof">/10</span>
+                <span>/10</span>
               </p>
-              <span>{movie.popularity}</span>
+              <span className={styles.popularity}>{movie.popularity}</span>
             </div>
             <CustomRating movieid={movieid} />
           </div>

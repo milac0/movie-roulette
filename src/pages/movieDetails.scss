@@ -1,0 +1,71 @@
+@import "../theme/variables";
+
+.details {
+  background: $backgroundGrey;
+  margin: 0 auto;
+  margin-bottom: 5em;
+  padding: 1em;
+  width: 660px;
+
+  .titleBlock {
+    background: #333333;
+    color: #fff;
+    margin-bottom: 1em;
+    padding: 1em;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0;
+      margin-bottom: 0.75em;
+    }
+  }
+
+  .rating {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 2rem;
+      margin: 0;
+
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    .popularity {
+      font-size: 1rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+.image {
+  display: flex;
+  justify-content: space-between;
+
+  .imagePoster {
+    margin-right: 1em;
+    height: 281px;
+  }
+
+  .imageBackdrop {
+    width: 425px;
+  }
+}
+
+.skeleton {
+  height: 600px;
+  width: 700px;
+  margin: 0 auto;
+}

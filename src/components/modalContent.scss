@@ -1,0 +1,48 @@
+@import "../theme/variables";
+
+.content {
+  background: $backgroundGrey;
+  border: "2px solid #000";
+  height: 420px;
+  left: 50%;
+  margin: 0;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalRandom {
+  .poster {
+    height: 370.5px;
+    margin-bottom: 1em;
+    width: 250px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  div {
+    text-align: center;
+
+    .nextBtn {
+      background: $secondary;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      padding: 0.5em 1em;
+      text-align: center;
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+.randomSkeleton {
+  height: 370.5px;
+  width: 250px;
+}

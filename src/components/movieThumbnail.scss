@@ -1,0 +1,59 @@
+@import "../theme/variables";
+
+.hoverDiv {
+  color: $primary;
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: relative;
+  height: 330px;
+  text-align: center;
+  width: 220px;
+
+  .title {
+    margin: 0;
+    padding: 3em 0.5em 0 0.5em;
+  }
+
+  .year {
+    margin-top: 0;
+  }
+
+  .lang {
+    bottom: 1em;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.movie {
+  background: $backgroundGrey;
+  height: 330px;
+  position: relative;
+  margin-top: -4px;
+  position: relative;
+  width: 220px;
+
+  .rating {
+    background: $secondary;
+    border-radius: 50%;
+    color: #000;
+    height: 40px;
+    position: absolute;
+    right: 0.5em;
+    text-align: center;
+    top: 0.5em;
+    width: 40px;
+
+    h1 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}

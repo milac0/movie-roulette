@@ -1,31 +1,5 @@
 import React from "react";
-import { css } from "emotion";
-
-const hover = css`
-  .hover-card {
-    position: relative;
-
-    .no-hover {
-      opacity: 1;
-    }
-
-    .hover {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-    }
-
-    &:hover {
-      .no-hover {
-        opacity: 0.3;
-      }
-
-      .hover {
-        opacity: 1;
-      }
-    }
-  }
-`;
+import styles from "./hover.scss";
 
 interface Props {
   onHover: React.ReactNode;
@@ -34,10 +8,10 @@ interface Props {
 
 const Hover: React.FC<Props> = ({ onHover, children }) => {
   return (
-    <div className={hover}>
-      <div className="hover-card">
-        <div className="no-hover">{children}</div>
-        <div className="hover">{onHover}</div>
+    <div className={styles.hoverDiv}>
+      <div className={styles.hoverCard}>
+        <div className={styles.noHover}>{children}</div>
+        <div className={styles.hover}>{onHover}</div>
       </div>
     </div>
   );

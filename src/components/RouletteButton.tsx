@@ -1,37 +1,8 @@
 import React from "react";
-import { css } from "emotion";
-import { colors } from "../theme/theme";
 import shuffleImg from "../assets/images/shuffle2.png";
 import Modal from "@material-ui/core/Modal";
 import ModalContent from "./ModalContent";
-
-const rouletteBtn = css`
-  background: ${colors.secondary};
-  border-radius: 50%;
-  bottom: 1.75em;
-  height: 60px;
-  position: fixed;
-  right: 4em;
-  width: 60px;
-  z-index: 1;
-
-  &:hover {
-    background: ${colors.secondaryDark};
-    cursor: pointer;
-  }
-`;
-
-const modalContent = css`
-  background: ${colors.backgroundGrey};
-  border: "2px solid #000";
-  height: 420px;
-  left: 50%;
-  margin: 0;
-  padding: 1em;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
+import styles from "./rouletteButton.scss";
 
 interface Props {}
 
@@ -42,9 +13,13 @@ const RouletteButton: React.FC<Props> = () => {
   };
   return (
     <div>
-      <img src={shuffleImg} className={rouletteBtn} onClick={handleShuffle} />
+      <img
+        src={shuffleImg}
+        className={styles.rouletteBtn}
+        onClick={handleShuffle}
+      />
       <Modal open={open} onClose={() => setOpen(false)}>
-        <div className={modalContent}>
+        <div>
           <ModalContent />
         </div>
       </Modal>

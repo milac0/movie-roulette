@@ -1,24 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
-import { css } from "emotion";
 import Rating from "@material-ui/lab/Rating";
 import { useState } from "react";
 import { UserContext } from "../context/UserContext";
-
-const msg = css`
-  color: #333333;
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin: 0;
-  margin-left: 0.5em;
-  max-width: 400px;
-`;
-
-const rateElement = css`
-  & span {
-    font-size: 40px;
-  }
-`;
+import styles from "./customRating.scss";
 
 interface Props {
   movieid: string | undefined;
@@ -68,14 +53,14 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
   return (
     <div>
       <Rating
-        className={rateElement}
+        className={styles.rateElement}
         name="movie-stars"
         max={10}
         value={rate}
         onChange={(e, value) => handleRating(value)}
         size="large"
       />
-      <h2 className={msg}>{message || null}</h2>
+      <h2 className={styles.msg}>{message || null}</h2>
     </div>
   );
 };

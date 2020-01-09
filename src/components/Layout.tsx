@@ -1,17 +1,7 @@
 import React from "react";
-import { css } from "emotion";
 import Header from "./Header";
 import Footer from "./Footer";
-
-const container = css`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-
-const content = css`
-  flex-grow: 1;
-`;
+import styles from "./layout.scss";
 
 interface Props {
   children: React.ReactNode;
@@ -19,8 +9,8 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className={container}>
-      <div className={content}>
+    <div className={styles.container}>
+      <div className={styles.content}>
         <Header />
         {children}
       </div>

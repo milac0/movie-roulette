@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import App from "./App";
 import UserContextProvider from "./context/UserContext";
 import DataContextProvider from "./context/DataContext";
+import "./index.scss";
 
 const jsx = (
   <UserContextProvider>

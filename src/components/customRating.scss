@@ -1,0 +1,14 @@
+.msg {
+  color: #333333;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0;
+  margin-left: 0.5em;
+  max-width: 400px;
+}
+
+.rateElement {
+  & span {
+    font-size: 40px;
+  }
+}

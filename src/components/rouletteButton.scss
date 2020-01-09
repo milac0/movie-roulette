@@ -1,0 +1,17 @@
+@import "../theme/variables";
+
+.rouletteBtn {
+  background: $secondary;
+  border-radius: 50%;
+  bottom: 1.75em;
+  height: 60px;
+  position: fixed;
+  right: 4em;
+  width: 60px;
+  z-index: 1;
+
+  &:hover {
+    background: $secondaryDark;
+    cursor: pointer;
+  }
+}

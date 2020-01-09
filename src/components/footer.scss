@@ -1,0 +1,15 @@
+@import "../theme/variables";
+
+.footer {
+  background: $backgroundGrey;
+  text-align: center;
+  padding: 3em;
+  p {
+    a {
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+}

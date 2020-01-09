@@ -1,48 +1,11 @@
 import React, { useEffect, useState, Fragment, useContext } from "react";
-import { css } from "emotion";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieThumbnail from "../components/MovieThumbnail";
-import { colors } from "./../theme/theme";
 import RouletteButton from "../components/RouletteButton";
 import { DataContext } from "./../context/DataContext";
 import SearchBar from "../components/SearchBar";
-
-const list = css`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1em auto;
-  max-width: 1200px;
-  width: 90%;
-`;
-
-const link = css`
-  text-decoration: none;
-  color: ${colors.primary};
-`;
-
-const buttons = css`
-  text-align: center;
-  margin-bottom: 10em;
-  position: relative;
-
-  button {
-    background: ${colors.primary};
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
-    margin: 0 auto;
-    padding: 1em;
-    width: 20em;
-
-    &:hover {
-      background: ${colors.primaryDark};
-      cursor: pointer;
-    }
-  }
-`;
+import styles from "./movieList.scss";
 
 interface Props {}
 
@@ -77,14 +40,14 @@ const MovieList: React.FC<Props> = () => {
   return (
     <Fragment>
       <SearchBar />
-      <div className={list}>
+      <div className={styles.list}>
         {movies.map((movie, i) => (
-          <Link className={link} to={`/movies/${movie.id}`} key={i}>
+          <Link className={styles.link} to={`/movies/${movie.id}`} key={i}>
             <MovieThumbnail movie={movie} />
           </Link>
         ))}
       </div>
-      <div className={buttons}>
+      <div className={styles.buttons}>
         <button onClick={handleClick}>load more...</button>
         <RouletteButton />
       </div>
