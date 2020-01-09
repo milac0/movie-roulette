@@ -8,11 +8,9 @@ interface Props {
 
 const Hover: React.FC<Props> = ({ onHover, children }) => {
   return (
-    <div className={styles.hoverDiv}>
-      <div className={styles.hoverCard}>
-        <div className={styles.noHover}>{children}</div>
-        <div className={styles.hover}>{onHover}</div>
-      </div>
+    <div className={styles.hoverCard}>
+      <div className={styles.noHover}>{children}</div>
+      <div className={styles.hover}>{onHover}</div>
     </div>
   );
 };
