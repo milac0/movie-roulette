@@ -3,46 +3,63 @@
 .content {
   background: $backgroundGrey;
   border: "2px solid #000";
-  height: 420px;
+  height: 430px;
   left: 50%;
   margin: 0;
   padding: 1em;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-}
 
-.modalRandom {
+  .close {
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   .poster {
+    align-items: center;
+    display: flex;
     height: 370.5px;
+    margin-top: 0.5em;
     margin-bottom: 1em;
     width: 250px;
 
     img {
-      height: 100%;
+      height: auto;
       width: 100%;
     }
   }
 
-  div {
-    text-align: center;
+  .options {
+    display: flex;
+    justify-content: space-around;
 
-    .nextBtn {
+    select {
+      border: 1px solid $primary;
+      border-radius: 5px;
+      font-weight: 700;
+      padding: 0.5em 0.5em;
+      width: 10em;
+
+      option {
+        font-weight: 700;
+      }
+    }
+
+    button {
       background: $secondary;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 700;
-      padding: 0.5em 1em;
+      padding: 0.5em 2em;
       text-align: center;
       &:active {
         transform: translateY(2px);
       }
     }
   }
-}
-
-.randomSkeleton {
-  height: 370.5px;
-  width: 250px;
 }
