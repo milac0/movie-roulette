@@ -62,6 +62,7 @@ const MovieDetails: React.FC<Props> = () => {
                   width="425"
                   height="281"
                   src={`https://www.youtube.com/embed/${trailer}`}
+                  allowFullScreen
                 ></iframe>
               ) : (
                 <img
