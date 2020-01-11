@@ -2,6 +2,7 @@ import React from "react";
 import Movie from "../../interface/Movie";
 import Hover from "../Hover/Hover";
 import { getYear } from "../../helpers";
+import questionImg from "../../assets/images/question.png";
 import styles from "./movieThumbnail.scss";
 
 interface Props {
@@ -24,7 +25,13 @@ const MovieThumbnail: React.FC<Props> = ({
         <div className={styles.rating}>
           <h1>{vote_average}</h1>
         </div>
-        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
+        <img
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : questionImg
+          }
+        />
       </div>
     </Hover>
   );
