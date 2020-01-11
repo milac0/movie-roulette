@@ -28,10 +28,10 @@ const MovieThumbnail: React.FC<Props> = ({
         {poster_path ? (
           <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
         ) : (
-            <div className={styles.altContainer}>
-              <img src={questionImg} />
-            </div>
-          )}
+          <div className={styles.altContainer}>
+            <img src={questionImg} />
+          </div>
+        )}
       </div>
     </Hover>
   );
