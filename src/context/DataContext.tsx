@@ -1,11 +1,12 @@
 import React, { createContext, useState } from "react";
 import Movie from "../interface/Movie";
+import Filters from "./../enums/Filters";
 
 const initState = {
   movies: [],
   setMovies: (movies: Array<Movie>) => {},
-  filterBy: "popular",
-  setFilterBy: (filter: string) => {},
+  filterBy: Filters.Popular,
+  setFilterBy: (filter: Filters) => {},
   query: "",
   setQuery: (filter: string | null) => {},
   page: 1,
@@ -19,7 +20,7 @@ interface Props {
 }
 
 const DataContextProvider: React.FC<Props> = ({ children }) => {
-  const [filterBy, setFilterBy] = useState<string | null>("popular");
+  const [filterBy, setFilterBy] = useState<Filters | null>(Filters.Popular);
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState<Array<Movie>>([]);
   const [page, setPage] = useState(1);

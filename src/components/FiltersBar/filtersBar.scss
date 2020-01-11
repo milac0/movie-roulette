@@ -9,4 +9,9 @@
   button {
     @extend %sharedBtn;
   }
+
+  .activeFilter {
+    color: #fff;
+    outline: none;
+  }
 }
