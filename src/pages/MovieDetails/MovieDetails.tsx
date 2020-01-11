@@ -9,27 +9,33 @@ import {
 import { getYear } from "../../helpers/index";
 import CustomRating from "../../components/CustomRating/CustomRating";
 import styles from "./movieDetails.scss";
+import Movie from "../../interface/Movie";
 
 interface Props {}
 
 const MovieDetails: React.FC<Props> = () => {
   const { movieid } = useParams();
-  const [movie, setMovie] = useState();
+  const movieURL = `/movie/${movieid}?api_key=${process.env.API_KEY}&language=en-US`;
+  const trailerURL = `movie/${movieid}/videos?api_key=${process.env.API_KEY}&language=en-US`;
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const response = (
-        await axios.get(
-          `/movie/${movieid}?api_key=${process.env.API_KEY}&language=en-US`
-        )
-      ).data;
-      setMovie(response);
+      const {
+        data: { results }
+      } = await axios.get(trailerURL);
+      if (results.length > 0 && results[0].key !== null) {
+        setTrailer(results[0].key);
+      }
+      const { data: movie } = await axios.get(movieURL);
+      setMovie(movie);
     })();
   }, []);
 
   return (
     <div>
-      {movie === undefined ? (
+      {!movie ? (
         <div className={styles.skeleton}></div>
       ) : (
         <div className={styles.details}>
@@ -45,12 +51,28 @@ const MovieDetails: React.FC<Props> = () => {
             <div className={styles.image}>
               <img
                 className={styles.imagePoster}
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : "http://via.placeholder.com/187x281"
+                }
               />
-              <img
-                className={styles.imageBackdrop}
-                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              />
+              {trailer ? (
+                <iframe
+                  width="425"
+                  height="281"
+                  src={`https://www.youtube.com/embed/${trailer}`}
+                ></iframe>
+              ) : (
+                <img
+                  className={styles.imageBackdrop}
+                  src={
+                    movie.backdrop_path
+                      ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+                      : "http://via.placeholder.com/425x281"
+                  }
+                />
+              )}
             </div>
           </div>
           <div className={styles.rating}>
