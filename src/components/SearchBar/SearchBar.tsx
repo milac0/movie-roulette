@@ -1,36 +1,41 @@
 import React, { useContext } from "react";
+import axios from "axios";
 import { DataContext } from "../../context/DataContext";
-import Search from "../Search/Search";
 import styles from "./searchBar.scss";
 
 interface Props {}
 
-const SearchBar: React.FC<Props> = () => {
-  const { setFilterBy, setQuery } = useContext(DataContext);
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setQuery("");
-    setFilterBy(e.currentTarget.value);
+const Search: React.FC<Props> = () => {
+  const { setMovies, query, setQuery, setFilterBy } = useContext(DataContext);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (query) {
+      const url = `/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${query}&include_adult=false&page=1`;
+      const movies = (await axios.get(url)).data.results;
+      setMovies(movies);
+      setFilterBy(null);
+    }
+  };
   return (
     <div className={styles.searchbar}>
       <div className={styles.container}>
-        <Search />
-        <button onClick={handleClick} value="popular">
-          Popular
-        </button>
-        <button onClick={handleClick} value="now_playing">
-          Now Playing
-        </button>
-        <button onClick={handleClick} value="top_rated">
-          Top Rated
-        </button>
-        <button onClick={handleClick} value="upcoming">
-          Upcoming
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="search"
+            placeholder="search for..."
+            onChange={handleChange}
+            value={query}
+          />
+          <button type="submit">Search!</button>
+        </form>
       </div>
     </div>
   );
 };
 
-export default SearchBar;
+export default Search;
