@@ -14,9 +14,9 @@ const MovieThumbnail: React.FC<Props> = ({
 }) => {
   const hover = (
     <div className={styles.hoverDiv}>
-      <p className="title">{title.toUpperCase() || null}</p>
-      <p className="year">{getYear(release_date) || null}</p>
-      <p className="lang">{original_language.toUpperCase() || null}</p>
+      <h1>{title.toUpperCase() || null}</h1>
+      <h2>{getYear(release_date) || null}</h2>
+      <h3>{original_language.toUpperCase() || null}</h3>
     </div>
   );
   return (
@@ -25,13 +25,13 @@ const MovieThumbnail: React.FC<Props> = ({
         <div className={styles.rating}>
           <h1>{vote_average}</h1>
         </div>
-        <img
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : questionImg
-          }
-        />
+        {poster_path ? (
+          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
+        ) : (
+          <div className={styles.altContainer}>
+            <img src={questionImg} />
+          </div>
+        )}
       </div>
     </Hover>
   );

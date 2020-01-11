@@ -9,17 +9,20 @@
   text-align: center;
   width: 220px;
 
-  .title {
+  h1 {
+    font-size: inherit;
     margin: 0;
     padding: 3em 0.5em 0 0.5em;
   }
 
-  .year {
+  h2 {
+    font-size: inherit;
     margin-top: 0;
   }
 
-  .lang {
+  h3 {
     bottom: 1em;
+    font-size: inherit;
     left: 50%;
     margin: 0;
     position: absolute;
@@ -52,8 +55,14 @@
     }
   }
 
+  .altContainer {
+    img {
+      margin-top: 3em;
+    }
+  }
+
   img {
-    height: 100%;
+    height: auto;
     width: 100%;
   }
 }
