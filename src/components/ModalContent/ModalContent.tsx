@@ -19,7 +19,6 @@ const ModalContent: React.FC<Props> = ({ handleClose }) => {
   const [movie, setMovie] = useState(null);
   const [genres, setGenres] = useState<Array<Genre>>([]);
   const [select, setSelect] = useState("28");
-  const [firstRender, setFirstRender] = useState(true);
   const [next, setNext] = useState(0);
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const ModalContent: React.FC<Props> = ({ handleClose }) => {
 
   useEffect(() => {
     (async () => {
-      if (!firstRender) {
+      if (next !== 0) {
         // total pages is always 500
         const totalPages = 500;
         const randomPage = randomNumber(1, totalPages);
@@ -59,7 +58,6 @@ const ModalContent: React.FC<Props> = ({ handleClose }) => {
   };
 
   const handleNext = () => {
-    setFirstRender(false);
     setNext(next + 1);
   };
 
@@ -67,7 +65,7 @@ const ModalContent: React.FC<Props> = ({ handleClose }) => {
     <div className={styles.content}>
       <img className={styles.close} src={closeImg} onClick={handleClose} />
       <div className={styles.poster}>
-        {firstRender ? (
+        {next === 0 ? (
           <img src={questionImg} />
         ) : movie === null ? null : (
           <Link to={`/movies/${movie.id}`}>
