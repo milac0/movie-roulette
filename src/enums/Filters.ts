@@ -1,7 +1,7 @@
 enum Filters {
   Popular = "popular",
-  NowPlaying = "now_playing",
-  TopRated = "top_rated",
+  "Now Playing" = "now_playing",
+  "Top Rated" = "top_rated",
   Upcoming = "upcoming"
 }
 
