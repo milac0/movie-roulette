@@ -10,7 +10,7 @@ const LoadMoreButton: React.FC<Props> = () => {
 
   return (
     <div className={styles.loadMore}>
-      <button onClick={handleClick}>load more...</button>
+      <button onClick={handleClick}>load</button>
     </div>
   );
 };

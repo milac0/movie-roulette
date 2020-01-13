@@ -5,16 +5,17 @@ $secondaryDark: #05b2a4;
 $backgroundGrey: #eeeeee;
 
 %sharedBtn {
-  background: $secondaryDark;
+  background: $secondary;
   border: none;
   border-radius: 5px;
   font-size: 0.75rem;
   font-weight: 700;
   margin: 0 1em;
+  outline: none;
   padding: 0.5em 1em;
 
   &:hover {
-    background: $secondary;
+    background: $secondaryDark;
     cursor: pointer;
   }
 

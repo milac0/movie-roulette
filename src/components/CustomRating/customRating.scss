@@ -7,8 +7,30 @@
   max-width: 400px;
 }
 
-.rateElement {
-  & span {
-    font-size: 40px;
+span {
+  font-size: 1rem;
+}
+
+@media (min-width: 280px) {
+  span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 370px) {
+  span {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 414px) {
+  span {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 614px) {
+  span {
+    font-size: 2.5rem;
   }
 }

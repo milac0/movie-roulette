@@ -58,12 +58,12 @@ const MovieDetails: React.FC<Props> = () => {
                 }
               />
               {trailer ? (
-                <iframe
-                  width="425"
-                  height="281"
-                  src={`https://www.youtube.com/embed/${trailer}`}
-                  allowFullScreen
-                ></iframe>
+                <div className={styles.responsiveContainer}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${trailer}`}
+                    allowFullScreen
+                  />
+                </div>
               ) : (
                 <img
                   className={styles.imageBackdrop}

@@ -13,9 +13,9 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
   const { user, isAuth } = useContext(UserContext);
   const [message, setMessage] = useState();
   const [rate, setRate] = useState<number | null>(0);
+
   useEffect(() => {
     (async () => {
-      // no other way to fetch guest users ratings
       if (isAuth()) {
         try {
           const ratedMovies = (
@@ -57,12 +57,10 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
   return (
     <div>
       <Rating
-        className={styles.rateElement}
         name="movie-stars"
         max={10}
         value={rate}
         onChange={(e, value) => handleRating(value)}
-        size="large"
       />
       <h2 className={styles.msg}>{message || null}</h2>
     </div>

@@ -6,20 +6,38 @@
 }
 
 .container {
-  padding: 1em 2em;
-  margin: 0 auto;
-  max-width: 1200px;
+  padding: 1em 0.5em;
 }
 
 form {
+  display: flex;
+  justify-content: center;
+
   input {
     border: 1px solid $secondaryDark;
     border-radius: 5px;
     font-size: 1rem;
     padding: 0.25em 0.5em;
+    width: 55%;
   }
 
   button {
     @extend %sharedBtn;
+  }
+}
+
+@media (min-width: 414px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 1em 2em;
+
+    form {
+      display: block;
+
+      input {
+        width: 220px;
+      }
+    }
   }
 }

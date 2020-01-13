@@ -2,9 +2,11 @@
 
 .container {
   background: $backgroundGrey;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
   justify-content: center;
   padding: 1em;
+  row-gap: 0.5em;
 
   button {
     @extend %sharedBtn;
@@ -12,6 +14,12 @@
 
   .activeFilter {
     color: #fff;
-    outline: none;
+  }
+}
+
+@media (min-width: 414px) {
+  .container {
+    display: flex;
+    justify-content: center;
   }
 }

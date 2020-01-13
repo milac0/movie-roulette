@@ -5,9 +5,9 @@
   font-size: 1.5rem;
   font-weight: 700;
   position: relative;
-  height: 330px;
+  height: 240px;
   text-align: center;
-  width: 220px;
+  width: 160px;
 
   h1 {
     font-size: inherit;
@@ -32,11 +32,11 @@
 
 .movie {
   background: $backgroundGrey;
-  height: 330px;
+  height: 240px;
   position: relative;
   margin-top: 0;
   position: relative;
-  width: 220px;
+  width: 160px;
 
   .rating {
     background: $secondary;
@@ -58,11 +58,27 @@
   .altContainer {
     align-items: center;
     display: flex;
-    height: 330px;
+    height: 240px;
   }
 
   img {
     height: auto;
     width: 100%;
+  }
+}
+
+@media (min-width: 414px) {
+  .hoverDiv {
+    height: 330px;
+    width: 220px;
+  }
+
+  .movie {
+    height: 330px;
+    width: 220px;
+
+    .altContainer {
+      height: 330px;
+    }
   }
 }

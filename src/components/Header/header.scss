@@ -3,7 +3,7 @@
 .header {
   background: $primary;
   color: white;
-  padding: 1em 2em;
+  padding: 1em 1em;
 
   .headerContent {
     display: flex;
@@ -17,7 +17,20 @@
 
     h1 {
       color: #fff;
+      font-size: 1.5rem;
       margin: 0;
+    }
+  }
+}
+
+@media (min-width: 414px) {
+  .header {
+    padding: 1em 2em;
+
+    .headerContent {
+      h1 {
+        font-size: 2rem;
+      }
     }
   }
 }

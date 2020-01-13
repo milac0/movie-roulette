@@ -2,15 +2,22 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 220px);
+  grid-template-columns: repeat(auto-fill, 160px);
   grid-gap: 0px;
   justify-content: center;
   margin: 1em auto;
-  max-width: 1200px;
-  width: 90%;
+  width: 98%;
 }
 
 .link {
   color: $primary;
   text-decoration: none;
+}
+
+@media (min-width: 414px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, 220px);
+    max-width: 1200px;
+    width: 90%;
+  }
 }

@@ -3,19 +3,29 @@
 .loadMore {
   display: flex;
   justify-content: center;
-  margin-bottom: 10em;
+  margin-bottom: 3em;
+
   button {
     background: $primary;
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 1rem;
+    outline: none;
     padding: 1em;
-    width: 20em;
+    width: 5em;
 
     &:hover {
       background: $primaryDark;
       cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 414px) {
+  .loadMore {
+    button {
+      width: 10em;
     }
   }
 }

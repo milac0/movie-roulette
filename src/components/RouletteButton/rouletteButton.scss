@@ -4,15 +4,22 @@
   background: $secondary;
   border: 3px solid $primary;
   border-radius: 50%;
-  bottom: 3em;
+  bottom: 1em;
   height: 60px;
   position: fixed;
-  right: 3em;
+  right: 1em;
   width: 60px;
   z-index: 1;
 
   &:hover {
     background: $secondaryDark;
     cursor: pointer;
+  }
+}
+
+@media (min-width: 414px) {
+  .rouletteBtn {
+    bottom: 3em;
+    right: 3em;
   }
 }
