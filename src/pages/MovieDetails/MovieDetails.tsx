@@ -10,6 +10,7 @@ import { getYear } from "../../helpers/index";
 import CustomRating from "../../components/CustomRating/CustomRating";
 import styles from "./movieDetails.scss";
 import Movie from "../../interface/Movie";
+import ScrollToTopOnMount from "../../components/ScrollToTopOnMount";
 
 interface Props {}
 
@@ -39,6 +40,7 @@ const MovieDetails: React.FC<Props> = () => {
         <div className={styles.skeleton}></div>
       ) : (
         <div className={styles.details}>
+          <ScrollToTopOnMount />
           <div className={styles.titleBlock}>
             <h1>
               {movie.title} ({getYear(movie.release_date)}){" "}
