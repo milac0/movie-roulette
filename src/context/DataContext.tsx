@@ -2,8 +2,10 @@ import React, { createContext, useState } from "react";
 import Movie from "../interface/Movie";
 import Filters from "./../enums/Filters";
 
+const movies: Array<Movie> = [];
+
 const initState = {
-  movies: [],
+  movies,
   setMovies: (movies: Array<Movie>) => {},
   filterBy: Filters.Popular,
   setFilterBy: (filter: Filters) => {},
