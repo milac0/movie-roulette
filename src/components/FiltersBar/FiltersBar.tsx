@@ -15,7 +15,7 @@ const SearchBar: React.FC<Props> = () => {
 
   return (
     <div className={styles.container}>
-      {Object.keys(Filters).map((key, i) => (
+      {Object.keys(Filters).map((key: keyof typeof Filters, i) => (
         <button
           key={i}
           onClick={handleClick}

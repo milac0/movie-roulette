@@ -4,6 +4,7 @@ import Rating from "@material-ui/lab/Rating";
 import { useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import styles from "./customRating.scss";
+import Movie from "./../../interface/Movie";
 
 interface Props {
   movieid: string | undefined;
@@ -25,7 +26,7 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
           ).data.results;
           if (ratedMovies) {
             const movie = ratedMovies.filter(
-              rated => rated.id.toString() === movieid
+              (rated: Movie) => rated.id.toString() === movieid
             );
             movie.length > 0 ? setRate(movie[0].rating) : setRate(null);
           }
