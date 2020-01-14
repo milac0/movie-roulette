@@ -8,9 +8,10 @@ import {
 } from "./movieDetails.helpers";
 import { getYear } from "../../helpers/index";
 import CustomRating from "../../components/CustomRating/CustomRating";
-import styles from "./movieDetails.scss";
 import Movie from "../../interface/Movie";
 import ScrollToTopOnMount from "../../components/ScrollToTopOnMount";
+import noImageImg from "../../assets/images/noImage.png";
+import styles from "./movieDetails.scss";
 
 interface Props {}
 
@@ -56,7 +57,7 @@ const MovieDetails: React.FC<Props> = () => {
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                    : "http://via.placeholder.com/187x281"
+                    : noImageImg
                 }
               />
               {trailer ? (
@@ -72,7 +73,7 @@ const MovieDetails: React.FC<Props> = () => {
                   src={
                     movie.backdrop_path
                       ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-                      : "http://via.placeholder.com/425x281"
+                      : noImageImg
                   }
                 />
               )}
