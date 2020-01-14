@@ -86,7 +86,7 @@ const MovieDetails: React.FC<Props> = () => {
               </p>
               <span className={styles.popularity}>{movie.popularity}</span>
             </div>
-            <CustomRating movieid={movieid} />
+            <CustomRating movieid={parseInt(movieid)} />
           </div>
           <p>{movie.overview}</p>
           <p>

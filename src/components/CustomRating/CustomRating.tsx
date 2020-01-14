@@ -7,7 +7,7 @@ import styles from "./customRating.scss";
 import Movie from "./../../interface/Movie";
 
 interface Props {
-  movieid: string | undefined;
+  movieid: number | undefined;
 }
 
 const CustomRating: React.FC<Props> = ({ movieid }) => {
@@ -26,7 +26,7 @@ const CustomRating: React.FC<Props> = ({ movieid }) => {
           ).data.results;
           if (ratedMovies) {
             const movie = ratedMovies.filter(
-              (rated: Movie) => rated.id.toString() === movieid
+              (rated: Movie) => rated.id === movieid
             );
             movie.length > 0 ? setRate(movie[0].rating) : setRate(null);
           }
