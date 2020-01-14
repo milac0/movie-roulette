@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadMoreButton renders correctly snapshot renders 1`] = `
+<div
+  className="loadMore"
+>
+  <button
+    onClick={[Function]}
+  >
+    load
+  </button>
+</div>
+`;

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hover renders correctly snapshot renders 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="header"
+    >
+      <div
+        className="headerContent"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <h1>
+            Movie roulette
+          </h1>
+        </a>
+        <button
+          className="btn"
+          onClick={[Function]}
+        >
+          Login as Guest
+        </button>
+      </div>
+    </div>
+    <div>
+      testing div!
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <p>
+      API provided by
+       
+      <a
+        href="https://www.themoviedb.org/"
+        target="_blank"
+      >
+        TMDb
+      </a>
+    </p>
+  </div>
+</div>
+`;

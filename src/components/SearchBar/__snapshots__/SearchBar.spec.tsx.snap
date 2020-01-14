@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar renders correctly snapshot renders 1`] = `
+<div
+  className="searchbar"
+>
+  <div
+    className="container"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        name="search"
+        onChange={[Function]}
+        placeholder="search for..."
+        type="text"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Search!
+      </button>
+    </form>
+  </div>
+</div>
+`;

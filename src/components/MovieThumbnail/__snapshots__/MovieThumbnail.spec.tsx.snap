@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieThumbnail renders correctly snapshot renders 1`] = `
+<div
+  className="hoverCard"
+>
+  <div
+    className="noHover"
+  >
+    <div
+      className="movie"
+    >
+      <div
+        className="rating"
+      >
+        <h1>
+          6
+        </h1>
+      </div>
+      <img
+        src="https://image.tmdb.org/t/p/w500/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
+      />
+    </div>
+  </div>
+  <div
+    className="hover"
+  >
+    <div
+      className="hoverDiv"
+    >
+      <h1>
+        AD ASTRA
+      </h1>
+      <h2>
+        2019
+      </h2>
+      <h3>
+        EN
+      </h3>
+    </div>
+  </div>
+</div>
+`;

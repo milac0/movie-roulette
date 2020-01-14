@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hover renders correctly snapshot renders 1`] = `
+<div
+  className="hoverCard"
+>
+  <div
+    className="noHover"
+  >
+    <div>
+      another testing div!
+    </div>
+  </div>
+  <div
+    className="hover"
+  >
+    <div>
+      testing div!
+    </div>
+  </div>
+</div>
+`;

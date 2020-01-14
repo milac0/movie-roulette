@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly snapshot renders 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="headerContent"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <h1>
+        Movie roulette
+      </h1>
+    </a>
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Login as Guest
+    </button>
+  </div>
+</div>
+`;

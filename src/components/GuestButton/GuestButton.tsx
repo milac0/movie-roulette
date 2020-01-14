@@ -41,7 +41,6 @@ const GuestButton: React.FC<Props> = () => {
       {expand && (
         <div className={styles.accountOptions}>
           <p onClick={handleLogout}>Sign out</p>
-          <p>//other acc stuff</p>
         </div>
       )}
     </div>

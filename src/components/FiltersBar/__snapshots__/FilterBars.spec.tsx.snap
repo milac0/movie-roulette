@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FiltersBar renders correctly snapshot renders 1`] = `
+<div
+  className="container"
+>
+  <button
+    className="activeFilter"
+    onClick={[Function]}
+    value="popular"
+  >
+    Popular
+  </button>
+  <button
+    className={null}
+    onClick={[Function]}
+    value="now_playing"
+  >
+    Now Playing
+  </button>
+  <button
+    className={null}
+    onClick={[Function]}
+    value="top_rated"
+  >
+    Top Rated
+  </button>
+  <button
+    className={null}
+    onClick={[Function]}
+    value="upcoming"
+  >
+    Upcoming
+  </button>
+</div>
+`;

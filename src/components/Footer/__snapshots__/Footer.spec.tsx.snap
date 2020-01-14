@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly snapshot renders 1`] = `
+<div
+  className="footer"
+>
+  <p>
+    API provided by
+     
+    <a
+      href="https://www.themoviedb.org/"
+      target="_blank"
+    >
+      TMDb
+    </a>
+  </p>
+</div>
+`;

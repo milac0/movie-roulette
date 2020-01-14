@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalContent renders correctly snapshot renders 1`] = `
+<div
+  className="content"
+>
+  <img
+    className="close"
+    onClick={[MockFunction]}
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+  />
+  <div
+    className="poster"
+  >
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+    />
+  </div>
+  <div
+    className="options"
+  >
+    <select>
+      Loading
+    </select>
+    <button
+      onClick={[Function]}
+    >
+      Random
+    </button>
+  </div>
+</div>
+`;
